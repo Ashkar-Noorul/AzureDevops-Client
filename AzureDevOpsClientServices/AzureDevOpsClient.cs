@@ -123,15 +123,15 @@ namespace AzureDevOpsClientServices
         {
             if (acceptanceCriteria != null && acceptanceCriteria.Length > 0)
             {
-                foreach (var criteria in acceptanceCriteria)
-                {
+                    string combinedCriteria = string.Join(", ", acceptanceCriteria);
+                
                     story.Add(new JsonPatchOperation
                     {
                         Operation = Microsoft.VisualStudio.Services.WebApi.Patch.Operation.Add,
                         Path = "/fields/Microsoft.VSTS.Common.AcceptanceCriteria",
-                        Value = criteria
+                        Value = combinedCriteria
                     });
-                }
+            
             }
         }
 
